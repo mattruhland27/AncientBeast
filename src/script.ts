@@ -61,7 +61,7 @@ $j(() => {
 	// For the location rendering. The logic is in src/ui/locations.ts
 	const locations: Locations = new Locations();
 	locations.renderLocations();
-	
+
 	// #randomLocation is the random button (dice) in the pre-match ui.
 	$j('#randomLocation').on('click', () => {
 		// logic in src/ui/locations.ts
@@ -475,3 +475,18 @@ export function isEmpty(obj) {
 
 	return true;
 }
+
+function isMobileDevice(): boolean{
+	return 'onstart' in window || navigator.maxTouchPoints > 0;
+}
+function mobileClass(): void {
+	if (isMobileDevice()) {
+		document.body.classList.add('is-mobile');
+	}
+	else{
+		document.body.classList.remove('is-mobile');
+	}
+}
+window.addEventListener('resize', mobileClass);
+window.addEventListener('orientationchange', mobileClass);
+window.addEventListener('DOMContentLoaded', mobileClass);
