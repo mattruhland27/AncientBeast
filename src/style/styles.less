@@ -2191,7 +2191,7 @@ input {
 
 /* Show orientation message only on mobile devices in portrait mode */
 @media screen and (max-width: 823px) and (orientation: portrait) {
-	#orientation-message {
+	body.is_mobile #orientation-message {
 		display: flex;
 	}
 }
